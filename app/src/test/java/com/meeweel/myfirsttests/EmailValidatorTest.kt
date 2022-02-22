@@ -17,6 +17,11 @@ class EmailValidatorTest {
     }
 
     @Test
+    fun emailValidator_CorrectEmailRussianDomain_ReturnsTrue() {
+        assertTrue(EmailValidator.isValidEmail("name@email.ru"))
+    }
+
+    @Test
     fun emailValidator_InvalidEmailNoTld_ReturnsFalse() {
         assertFalse(EmailValidator.isValidEmail("name@email"))
     }
@@ -34,6 +39,11 @@ class EmailValidatorTest {
     @Test
     fun emailValidator_EmptyString_ReturnsFalse() {
         assertFalse(EmailValidator.isValidEmail(""))
+    }
+
+    @Test
+    fun emailValidator_InvalidEmailNumbersCountryCode_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("name@mail.22"))
     }
 
     @Test
